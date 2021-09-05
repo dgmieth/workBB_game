@@ -1,0 +1,151 @@
+<%- include('metaData/beginning.ejs', {title: info.pageTitle, nome: nome, imgAddress: imgAddress}) %>
+<style>
+    body{
+        background-color: rgba(0, 45, 75, 1);
+    }
+</style>
+
+<header class="w-75" style="height:158px!important;float: right;">
+    <div id="header" class=".container-fluid fixed-top w-75" style="background-color: rgba(0, 45, 75, 1); height: 158px;float: right;margin-left: 25%!important;">
+        
+        <div id="funci-wrapper" class="text-center mr-auto ">
+            <img src="/img/logo_reconheSER.png" alt="logo-reconheser" style="height: 100px;margin: 12px 0 0 6px;">
+            <p class="h4" style="color: white;padding-bottom: 7px;margin-bottom: 0;"><%= info.gecor %> - <%= info.prefixo %></p>
+        </div>
+    </div>
+</header>
+
+<style>
+    button{
+        height: 90%;
+        margin-left: 1%!important;
+        width: fit-content!important;
+    }
+    button:not(.not-include){
+        background-color: transparent;
+        border:rgba(235, 119, 12, 1) .5px solid;
+        color:rgba(235, 119, 12, 1);
+        font-size:.95rem;
+        width: 95%!important;
+        margin: 6px 0;
+    
+    }
+    button:hover:not(.btnActive, .not-include){
+        font-weight: 600;
+        border-width: 1.5px;
+        border-radius: 15%;
+        margin:5px 0;
+    }
+    .btnActive, .btnActive:hover {
+        background-color: rgba(235, 119, 12, 1)!important;
+        color: rgba(0, 45, 75, 1)!important;
+        border:none!important;
+    }
+    .btnActive:hover{
+        font-weight: 600;
+    }
+    #message {
+        position: fixed;
+        top: 5px;
+        left: 5px;
+        width: 16.66%;
+    }
+    #inner-message {
+        margin: 0 auto;
+    }
+</style>
+<div id="spinner" class=".container-fluid w-100" style="height:77%!important;position:absolute;top:158px;display:block">
+    <div class=".container-fluid w-100 h-100">
+        <div class=".container-fluid w-100 h-100  text-center mx-auto my-auto" style="background-color: white;">
+            <img src="/img/spinner.gif" alt="loading" style="height: 150px;margin-top: 158px;">
+        </div>
+    </div>
+</div>
+<main id="main" role="main" class=".container-fluid w-100" style="height:79%!important;display:none">
+    <div class=".container-fluid w-100 h-100">
+        <div class=".container-fluid w-100 h-100  text-center mx-auto my-auto" style="display:inline-flex;background-color: rgba(0, 45, 75, 1);">
+            <div class="container text-left" style="width: 25%!important;">
+                <div id="funciInfo" class="my-auto mx-auto text-center h-100" style="position: absolute;top: 0;left: 0;bottom: 0;width: 25%!important;background-color: rgba(0, 45, 75, 1);padding-top:4%!important">
+                    <style>
+                        #funciInfo p {
+                            color: white;
+                        }
+                    </style>
+                    <div class="container-fluid mx-auto my-auto text-center w-100">
+                        <div class="text-center vertical-center" style="margin-top: 12px;margin-bottom: 10px;">
+                            <img src="<%= imgAddress %>" alt="foto de <%= nome %>" style="height: 12vh; border-radius: 50%;">
+                            <p style="color: white;"><strong><%= nome %></strong></p>
+                
+                        </div>
+                        <p><strong>Matrícula:</strong></br><span id="infoMatricula"></span></p>
+                        <p><strong>Área:</strong></br><span id="infoArea"></span></p>
+                        <p><strong>Equipe:</strong></br><span id="infoEquipe"></span></p>
+                        <p><strong>Indicador Equipe:</strong></br><span id="infoIndicador"></span></p>
+                    </div>
+                    <div id="appStateBtns" class="container mx-auto-my-auto text-center w-100">
+                        <div class="row">
+                            <div class="col-12">
+                                <button id="totalBtn" class="btnActive">Total</button>
+                            </div>
+                            <div class="col-12">
+                                <button id="capacitacaoBtn">Capacitação</button>
+                            </div>
+                            <div class="col-12">
+                                <button id="quizBtn">Quiz</button>
+                            </div>
+                            <div class="col-12">
+                                <button id="indicadorEquipeBtn">Indicador Equipe</button>
+                            </div>
+                            <div class="col-12">
+                                <button id="acessosGSBtn">Acessos GS</button>
+                            </div>
+                        </div>
+                        <div style="height: 20px!important;"></div>
+                        <div class="row">
+                            <div class="col-2"></div>
+                            <div class="col-8">
+                                <button id="regulamentoGS" class="not-include btn btn-secondary w-100">Regulamento ReconheSER GS</button>
+                            </div>
+                            <div class="col-2"></div>
+                            <div class="col-2"></div>
+                            <div class="col-8">
+                                <button id="reonhesesrDIOPE" class="not-include btn btn-info w-100" style="font-weight: bold;">HOTSITE ReconheSER DIOPE</button>
+                            </div>
+                            <div class="col-2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row h-100 text-center mx-auto my-auto" style="width: 75%!important;background-color: white">
+                <div id="mainCol" class="col-12">
+                    <div class=".container-fluid h-100 w-100">
+                        <div id="periodsBtns" class="d-flex p-2 justify-content-center" style="height: 9%!important;padding:0!important">
+
+                        </div>
+                        <div class=".container-fuild w-100 mx-auto my-auto text-center" style="overflow-y: auto;height: 91%!important;">
+                            <div id="container" class="h-100 my-auto w-100 mx-auto text-center">
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="subCol" class="col-12 h-100" style="display: none;">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<%- include('partials/footer.ejs', {info: info}) %>
+<%- include('metaData/commonScripts.ejs') %>
+<!--CUSTOMED-->
+<script src="/js/highcharts/highcharts.js"></script>
+<script src="/js/highcharts/exporting.js"></script>
+<script src="/js/highcharts/accessibility.js"></script>
+<script src="/js/personaResults/appCtrl.js"></script>
+<script src="/js/personaResults/dataCtrl.js"></script>
+<script src="/js/personaResults/uiCtrl.js"></script>
+<script src="/js/personaResults/main.js"></script>
+
+<%- include('metaData/end.ejs') %>

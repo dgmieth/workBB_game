@@ -1,0 +1,142 @@
+<%- include('metaData/beginning.ejs', {title: info.pageTitle, nome: nome, imgAddress: imgAddress}) %>
+<%- include('partials/header.ejs', {info: info}) %>
+<!-- ================================================================================================= -->
+<!-- ================================================================================================= -->
+<!--Main Page -INICIO - FORM -->
+<main id="main" role="main" class=".container-fluid text-center mx-auto my-autow-100" style="height: <%= info.pageHeight %>vh;margin-top:158px;">
+    <% if(noMore) { %>
+        <div id="main-form-wrapper" class="container mx-auto" style="padding-top: 15px;">
+            <div class="card card-body align-middle w-100">
+                <p class="h2" style="color:rgba(65, 105, 225, 0.534)">Avaliação para o período <%= currentPeriod %> concluída!</p>
+            </div>
+        </div>
+        <% } else { %>
+            <% if(success){ %>
+                <div class="container text-center mx-auto" style="padding: 5px;">
+                    <div id="inner-message" class="alert alert-primary text-center">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <p>Avaliação salva com sucesso</p>
+                    </div>
+                </div>
+            <% } %> 
+            <% if(error){ %>
+                <div class="container text-center mx-auto" style="padding: 5px;">
+                    <div id="inner-message" class="alert alert-danger text-center">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <p>Não foi possível salvar a Avaliação</p>
+                    </div>
+                </div>
+            <% } %> 
+        <div id="main-form-wrapper" class="container" style="padding-top: 15px;">
+            <form>
+                <div class="form-group">
+                    <select id="selectO" class="form-control" style="font-weight: 600;" style="border:black  1px solid" name="ferramenta" required>
+                        <% dataFerramentas.forEach( (ferramenta,index) => { %> 
+                            <% if(index===0){%>
+                                <option value="" id="option&selecionar">Selecione a ferramenta</option>
+                            <% }%>
+                            <option value="<%= ferramenta.id_efic_dadosEntregasFerramentas %>" id="option&<%= ferramenta.id_efic_dadosEntregasFerramentas %>" ><%= ferramenta.nome %> - Área: <%= ferramenta.nomeArea %> - Desenvolvedor: <%= ferramenta.nomeDesenvolvedor %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div class=".container-fluid mx-auto">
+                    <div class="container mx-auto text-center">
+                            <p class="h3">
+                                Período avaliatório <%= currentPeriod %>
+                            </p>
+                    </div>
+                    <div class="container mx-auto text-center">
+                        <p class="h3">
+                            Baseado na experiência que você teve durante este projeto, considerando uma escala de 0 a 10, qual é a chance de você recomendar a Eficiência Operacional a um colega de trabalho?
+                        </p>
+                    </div>
+                    <p class="h4">Nota para a ferramenta:</p>
+                    <div class="container mx-auto text-center">
+                        <div id="nota_container" class="form-group mx-auto" style="padding-top: 15px;">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="nota" id="nota1" value="1" required>
+                                <label class="form-check-label" for="nota1" style="color: black;">
+                                    1
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="nota" id="nota2" value="2">
+                                <label class="form-check-label" for="nota2" style="color: black;">
+                                    2
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="nota" id="nota3" value="3">
+                                <label class="form-check-label" for="nota3" style="color: black;">
+                                    3
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="nota" id="nota4" value="4">
+                                <label class="form-check-label" for="nota4" style="color: black;">
+                                    4
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="nota" id="nota5" value="5">
+                                <label class="form-check-label" for="nota5" style="color: black;">
+                                    5
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="nota" id="nota6" value="6">
+                                <label class="form-check-label" for="nota6" style="color: black;">
+                                    6
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="nota" id="nota7" value="7">
+                                <label class="form-check-label" for="nota7" style="color: black;">
+                                    7
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="nota" id="nota8" value="8">
+                                <label class="form-check-label" for="nota8" style="color: black;">
+                                    8
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="nota" id="nota9" value="9">
+                                <label class="form-check-label" for="nota9" style="color: black;">
+                                    9
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="nota" id="nota10" value="10">
+                                <label class="form-check-label" for="nota10" style="color: black;">
+                                    10
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container mx-auto text-center">
+    
+                    <button type="submit" class="btn btn-primary mb-2" formmethod="POST" formaction="/services/avaliaEfic">Confirmar</button>
+                </div>
+    
+            </form>
+        </div>
+    <% }%>
+</main>
+    <script>
+        fetch('/services/fetchAvaliaEficFerramentas')
+        .then(answer =>{
+            return answer.json()
+        })
+        .then(result =>{
+            console.log(result)
+        })
+        .catch(err => console.log(err))
+    </script>
+<!--Main Page -FIM - FORM -->
+<!-- ================================================================================================= -->
+<%- include('partials/footer.ejs', {info: info}) %>
+<%- include('metaData/commonScripts.ejs') %>
+<%- include('metaData/end.ejs') %>

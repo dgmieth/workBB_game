@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100vh;">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/img/logo_reconheSER.png">
+    <!--CSS FILES-->
+<!--BOOTSTRAP-->
+<link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
+</head>
+<body class="h-100">
+<main id="main" role="main" class=".container-fluid text-center h-100 mx-auto my-auto w-100">
+    <div class="card card-body align-middle w-100 h-100 my-auto">
+        <div class="alert alert-danger text-center">
+            <p class="h2" style="color:rgba(65, 105, 225, 0.534)">Acesso não Autorizado!</p>
+        </div>
+        <p class="h2" style="color:rgba(0, 0, 0, 0.534)"><%= message %></p>
+        <% if(link){ %>
+            <p class="h2" style="color:rgba(65, 105, 225, 0.534)">Clique <a href="<%= link %>"><strong>aqui</strong></a> para fazer novo login na intranet.</p>
+        <% } %>
+    </div>
+</main>
+<%- include('metaData/commonScripts.ejs') %>
+<%- include('metaData/end.ejs') %>
